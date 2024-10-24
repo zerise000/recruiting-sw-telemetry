@@ -12,13 +12,16 @@ include_directories(
     # ${CMAKE_CURRENT_SOURCE_DIR}/other/dirs
 )
 
+set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
 add_library(
     ${PROJECT_NAME}
     SHARED
     
     # Sources
-    ${CMAKE_CURRENT_SOURCE_DIR}/fake_receiver.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/thread_receiver.cpp
+    ${SRC_DIR}/thread_receiver.cpp
+    ${SRC_DIR}/fake_receiver.c
+    ${SRC_DIR}/fsm.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}

@@ -1,4 +1,10 @@
-mkdir -p build
-cd build
-cmake ..
-make -j$(nproc)
+if [ ! -d build ]; then
+  mkdir -p build
+  cd build
+  cmake ..
+else
+  cd build
+  rm sessions/*
+  make -j$(nproc)
+fi
+
