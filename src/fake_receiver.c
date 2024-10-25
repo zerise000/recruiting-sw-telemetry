@@ -45,7 +45,6 @@ int can_receive(char message[MAX_CAN_MESSAGE_SIZE]){
 
     if((current_line_count+1) % next_start_stop == 0){
         printf("\n\n%d, %d\n\n", next_start_stop, start_or_stop);
-	// this part set start/stop random messages
 	
         if(start_or_stop == 0){      // start
             if(rand()%2 == 0){
@@ -62,7 +61,6 @@ int can_receive(char message[MAX_CAN_MESSAGE_SIZE]){
         }
 
 
-	// 
         bytes_received = strlen(message);
         current_line_count ++;
         return bytes_received;

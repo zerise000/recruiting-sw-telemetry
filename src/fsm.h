@@ -2,12 +2,13 @@
 #define __FSM_H__
 
 #include <iostream>
-#include <stdio.h>
 #include <cstdint>
-#include <ctime>
-#include <cstring>
+#include <queue>
 
-void next_state(uint64_t payload);
-void update_session(uint16_t id,uint64_t payload);
+#include "session.h"
+#include "message.h"
+
+void next_state(Session* curr_session,Message msg_in);
+void save_msg(std::queue<Message> &msg_ch); 
 
 #endif

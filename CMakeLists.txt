@@ -22,6 +22,8 @@ add_library(
     ${SRC_DIR}/thread_receiver.cpp
     ${SRC_DIR}/fake_receiver.c
     ${SRC_DIR}/fsm.cpp
+    ${SRC_DIR}/session.cpp
+    ${SRC_DIR}/message.h
 )
 
 target_link_libraries(${PROJECT_NAME}
