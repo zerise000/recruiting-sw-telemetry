@@ -1,18 +1,19 @@
-mkdir -p logs 
-mkdir -p csv
+#! /bin/bash
+LOGS_DIR="./logs"
+CSV_DIR="./csv"
+BUILD_DIR="build"
 
-
-if [ ! -d build ]; then
-  mkdir build
-  cd build
-  cmake ..
-else
-  if [ ! -z "./logs" ] && [ ! -z "./csv" ]; then
-	  rm "./logs"/*
-	  rm "./csv"/*
-  fi
-
-  cd build
+if [[ $1 == "--clean" ]];then
+	rm -rf $LOGS_DIR/* 
+	rm -rf $CSV_DIR/*
+	exit 0
 fi
+
+mkdir -p $LOGS_DIR
+mkdir -p $CSV_DIR 
+
+mkdir -p $BUILD_DIR 
+cd $BUILD_DIR
+cmake ..
 
 make -j$(nproc)

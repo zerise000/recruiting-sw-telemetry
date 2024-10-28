@@ -8,7 +8,19 @@
 #include "session.h"
 #include "message.h"
 
-void next_state(Session* curr_session,Message msg_in);
+#define UPDATE(fsm_in) \
+			(fsm_in->curr_session)->update_session(msg_in);\	
+	  		fsm_in->state = not fsm_in->state; 
+		
+typedef struct {
+	Session* curr_session;
+
+	//since the fsm has only two states we can use a boolean variable to represent them. 
+	//If variable is false then we're in IDLE state
+	bool state = false;
+} Fsm;
+
+void next_state(Fsm* fsm_in,Message msg_in);
 void save_msg(std::queue<Message> &msg_ch); 
 
 #endif
